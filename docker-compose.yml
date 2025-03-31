@@ -23,6 +23,13 @@ services:
       - pgdata:/var/lib/postgresql/data  # Persist the database data between container restarts
     networks:
       - app-network
+  redis:
+    image: redis:alpine  # Use the Redis Alpine image for a smaller footprint
+    container_name: redis
+    ports:
+      - "6379:6379"  # Expose port 6379 for Redis (the default port)
+    networks:
+      - app-network
   nginx:
     image: nginx:alpine
     container_name: nginx
